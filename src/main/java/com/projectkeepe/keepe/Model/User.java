@@ -58,11 +58,14 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> ticket;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<User> user;
+
     public User() {
     }
 
     public User(Integer id, String username, String fullname, String password, String correo, String rut,
-            int phonenumber, RolUser rolUser, List<Ticket> ticket) {
+            int phonenumber, RolUser rolUser, List<Ticket> ticket, List<User> user) {
         this.id = id;
         this.username = username;
         this.fullname = fullname;
@@ -71,6 +74,8 @@ public class User {
         this.rut = rut;
         this.phonenumber = phonenumber;
         this.rolUser = rolUser;
+        this.ticket = ticket;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -137,8 +142,22 @@ public class User {
         this.rolUser = rolUser;
     }
 
+    public List<Ticket> getTicket() {
+        return ticket;
+    }
+
     public void setTicket(List<Ticket> ticket) {
         this.ticket = ticket;
     }
+
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    
 
 }

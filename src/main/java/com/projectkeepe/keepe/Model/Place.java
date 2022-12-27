@@ -42,15 +42,20 @@ public class Place {
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Ticket> ticket;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Place() {
     }
 
-    public Place(Integer id, String placeName, String placeType, String adress, List<Ticket> ticket) {
+    public Place(Integer id, String placeName, String placeType, String adress, List<Ticket> ticket, User user) {
         this.id = id;
         this.placeName = placeName;
         this.placeType = placeType;
         this.adress = adress;
         this.ticket = ticket;
+        this.user = user;
     }
 
     public Integer getId() {
@@ -93,4 +98,14 @@ public class Place {
         this.ticket = ticket;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
+    
 }
